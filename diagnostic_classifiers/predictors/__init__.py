@@ -1,0 +1,3 @@
+from diagnostic_classifiers.predictors.seq_label_predictor import SeqLabelerPredictor
+from diagnostic_classifiers.predictors.sentence_word_predictor import SentenceWordPredictor
+from diagnostic_classifiers.predictors.sentence_span_classification_predictor import SentenceSpanClassificationPredictor

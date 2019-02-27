@@ -1,0 +1,41 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+
+  <crowd-instructions link-text="View instructions" link-type="button">
+    <short-summary>
+      <p>In this task you are given a sentence with a highlighted span, and asked to identify the span that
+         holds the meaning of the action in the sentence - whether it is the entire highlighted span (<i>get through</i>)
+        or just the verb (<i>get</i>).</p>
+    </short-summary>
+    
+    <detailed-instructions>
+      <p>In this task you are given a sentence with a highlighted span containing two words: a verb (e.g. <i>get</i>) and a preposition (e.g. <i>through</i>).</p>
+      <p>You are required to identify which span holds the meaning of the action in the sentence: is it just the verb (<i>get</i>) or the
+        entire phrase (<i>get through</i>)?</p>
+      <p>As a rule of thumb, when the action is the entire phrase (<i>get through</i>), you may be able to think of a single-word verb
+        that has the same meaning (e.g. <i>pass</i>), but it is not necessary that one exists.</p>
+    </detailed-instructions>
+
+    <positive-example>
+      <p><i>He nearly <mark>gave in</mark> to the temptation</i>: the verb is "give in".</p>
+      <p><i>The example <mark>given in</mark> section 2 is very informative</i>: the verb is "give".</p>
+    </positive-example>
+
+  </crowd-instructions>
+
+  <div>
+    <p><i>${sent}</i></p>
+    <p>Which is the verb in the following highlighted span?</p>
+    <input type="radio" name="answer" value="vpc" required> ${w_first} ${w_last}<br>
+    <input type="radio" name="answer" value="non_vpc"> ${w_first}<br>
+    <input type="radio" name="answer" value="incorrect"> I can't tell / the sentence does not make sense<br>
+    <br/>
+  </div>
+
+</crowd-form>

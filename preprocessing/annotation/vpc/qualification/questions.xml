@@ -1,0 +1,117 @@
+<QuestionForm xmlns='http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd'>  
+  <Question>
+      <QuestionIdentifier>q1</QuestionIdentifier>
+      <DisplayName>Q1</DisplayName>
+      <IsRequired>true</IsRequired>
+      <QuestionContent>
+        <FormattedContent><![CDATA[I'm honoured that you should choose me, but I feel there are others far more suited to <b>take on</b> the responsibility.]]></FormattedContent>
+      </QuestionContent>
+      <AnswerSpecification>
+        <SelectionAnswer>
+          <StyleSuggestion>radiobutton</StyleSuggestion>
+          <Selections>
+            <Selection>
+              <SelectionIdentifier>vpc</SelectionIdentifier>
+              <Text>take on</Text>
+            </Selection>
+            <Selection>
+              <SelectionIdentifier>v</SelectionIdentifier>
+              <Text>take</Text>
+            </Selection>
+          </Selections>
+        </SelectionAnswer>
+      </AnswerSpecification>
+  </Question>
+  <Question>
+      <QuestionIdentifier>q2</QuestionIdentifier>
+      <DisplayName>Q2</DisplayName>
+      <IsRequired>true</IsRequired>
+      <QuestionContent>
+        <FormattedContent><![CDATA[Fundamental decisions had to be <b>taken on</b> the American commitment to Korea.]]></FormattedContent>
+      </QuestionContent>
+      <AnswerSpecification>
+        <SelectionAnswer>
+          <StyleSuggestion>radiobutton</StyleSuggestion>
+          <Selections>
+            <Selection>
+              <SelectionIdentifier>vpc</SelectionIdentifier>
+              <Text>take on</Text>
+            </Selection>
+            <Selection>
+              <SelectionIdentifier>v</SelectionIdentifier>
+              <Text>take</Text>
+            </Selection>
+          </Selections>
+        </SelectionAnswer>
+      </AnswerSpecification>
+  </Question>
+  <Question>
+      <QuestionIdentifier>q3</QuestionIdentifier>
+      <DisplayName>Q3</DisplayName>
+      <IsRequired>true</IsRequired>
+      <QuestionContent>
+        <FormattedContent><![CDATA[One way or another he <b>got together</b>, in most weeks, as much spending money as a young working miner.]]></FormattedContent>
+      </QuestionContent>
+      <AnswerSpecification>
+        <SelectionAnswer>
+          <StyleSuggestion>radiobutton</StyleSuggestion>
+          <Selections>
+            <Selection>
+              <SelectionIdentifier>vpc</SelectionIdentifier>
+              <Text>get together</Text>
+            </Selection>
+            <Selection>
+              <SelectionIdentifier>v</SelectionIdentifier>
+              <Text>get</Text>
+            </Selection>
+          </Selections>
+        </SelectionAnswer>
+      </AnswerSpecification>
+  </Question>
+  <Question>
+      <QuestionIdentifier>q4</QuestionIdentifier>
+      <DisplayName>Q4</DisplayName>
+      <IsRequired>true</IsRequired>
+      <QuestionContent>
+        <FormattedContent><![CDATA[After an informal <b>get together</b> over cheese and wine, the business meeting was held.]]></FormattedContent>
+      </QuestionContent>
+      <AnswerSpecification>
+        <SelectionAnswer>
+          <StyleSuggestion>radiobutton</StyleSuggestion>
+          <Selections>
+            <Selection>
+              <SelectionIdentifier>vpc</SelectionIdentifier>
+              <Text>get together</Text>
+            </Selection>
+            <Selection>
+              <SelectionIdentifier>v</SelectionIdentifier>
+              <Text>get</Text>
+            </Selection>
+          </Selections>
+        </SelectionAnswer>
+      </AnswerSpecification>
+  </Question>
+  <Question>
+      <QuestionIdentifier>q5</QuestionIdentifier>
+      <DisplayName>Q5</DisplayName>
+      <IsRequired>true</IsRequired>
+      <QuestionContent>
+        <FormattedContent><![CDATA[It's in all the books I've <b>got at</b> home.]]></FormattedContent>
+      </QuestionContent>
+      <AnswerSpecification>
+        <SelectionAnswer>
+          <StyleSuggestion>radiobutton</StyleSuggestion>
+          <Selections>
+            <Selection>
+              <SelectionIdentifier>vpc</SelectionIdentifier>
+              <Text>get at</Text>
+            </Selection>
+            <Selection>
+              <SelectionIdentifier>v</SelectionIdentifier>
+              <Text>get</Text>
+            </Selection>
+          </Selections>
+        </SelectionAnswer>
+      </AnswerSpecification>
+  </Question>
+</QuestionForm>

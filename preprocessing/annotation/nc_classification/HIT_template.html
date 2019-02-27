@@ -1,0 +1,43 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+
+  <crowd-instructions link-text="View instructions" link-type="button">
+    <short-summary>
+      <p>In this task you are given a sentence with a highlighted span containing a noun compound.
+         You are also given a short phrase, and you are asked to describe whether the phrase describes the noun compound.
+         for example, <i>tax reduction</i> is "reduction given for tax payment" but not "reduction received when calculating taxes".</p>
+    </short-summary>
+    
+    <detailed-instructions>
+      <p>In this task you are given a sentence with a highlighted span containing a noun compound.
+         You are also given a short phrase, and you are asked to describe whether the phrase describes the noun compound.
+         for example, <i>tax reduction</i> is "reduction given for tax payment" but not "reduction received when calculating taxes".</p>
+    </detailed-instructions>
+
+    <positive-example>
+      <p><i>"Trump exaggerates on who was saved money by <mark>tax reduction</mark>"</i>, and the phrase "reduction given for tax payment".</p>
+      <p><i>"Does your fitness routine include this vital <mark>body part</mark>?"</i>, and the phrase "part that makes up body".</p>
+    </positive-example>
+
+    <negative-example>
+      <p><i>"Trump exaggerates on who was saved money by <mark>tax reduction</mark>"</i>, and the phrase "reduction received when calculating taxes".</p>
+      <p><i>"Does your fitness routine include this vital <mark>body part</mark>?"</i>, and the phrase "replacement part bought for body".</p>
+    </negative-example>
+  </crowd-instructions>
+
+  <div>
+    <p><i>${sent}</i></p>
+    <p>Can the highlighted span be described by "${paraphrase}"?</p>
+    <input type="radio" name="label" value="yes" required> Yes <br>
+    <input type="radio" name="label" value="no"> No <br>
+    <input type="radio" name="label" value="incorrect"> I can't tell / the sentence does not make sense <br>
+    <br/>
+  </div>
+
+</crowd-form>

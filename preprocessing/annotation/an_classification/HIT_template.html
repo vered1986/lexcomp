@@ -1,0 +1,44 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+
+  <crowd-instructions link-text="View instructions" link-type="button">
+    <short-summary>
+      <p>In this task you are given a sentence with a highlighted span containing a noun described by an adjective.
+         You are asked to identify whether the adjective refers to a certain attribute of that noun,
+         for example, <i>hot debate</i> refers to emotionality but not to temperature (as opposed to <i>hot tea</i>).</p>
+    </short-summary>
+    
+    <detailed-instructions>
+      <p>In this task you are given a sentence with a highlighted span containing a noun described by an adjective.
+         You are asked to identify whether the adjective refers to a certain attribute of that noun,
+         for example, <i>hot debate</i> refers to emotionality but not to temperature (as opposed to <i>hot tea</i>).</p>
+    </detailed-instructions>
+
+    <positive-example>
+      <p><i>Dan was sipping his <mark>cold beer</mark></i>, the attribute is "temperature".</p>
+      <p><i>He has a really <mark>big cat</mark></i>: the attribute "size".</p>
+      <p><i>He used to come in, he was a sweet guy and a <mark>big tipper</mark></i>: the attribute is "generosity".</p>
+    </positive-example>
+
+    <negative-example>
+      <p><i>Sara got <mark>cold feet</mark></i>, the attribute is <b>NOT</b> "temperature".</p>
+      <p><i>He used to come in, he was a sweet guy and a <mark>big tipper</mark></i>: the attribute <b>NOT</b> "size".</p>
+    </negative-example>
+  </crowd-instructions>
+
+  <div>
+    <p><i>${sent}</i></p>
+    <p>Does the highlighted adjective refer to ${attribute}?</p>
+    <input type="radio" name="label" value="yes" required> Yes <br>
+    <input type="radio" name="label" value="no"> No <br>
+    <input type="radio" name="label" value="incorrect"> I can't tell / the sentence does not make sense <br>
+    <br/>
+  </div>
+
+</crowd-form>

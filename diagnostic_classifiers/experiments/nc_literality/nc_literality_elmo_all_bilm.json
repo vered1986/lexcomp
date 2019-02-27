@@ -1,0 +1,54 @@
+{
+  "dataset_reader": {
+    "type": "sentence_word",
+    "token_indexers": {
+      "elmo": {
+        "type": "elmo_characters"
+      }
+    }
+  },
+  "train_data_path": "diagnostic_classifiers/data/nc_literality/train.jsonl",
+  "validation_data_path": "diagnostic_classifiers/data/nc_literality/val.jsonl",
+  "model": {
+    "type": "sentence_word",
+    "text_field_embedder": {
+      "elmo": {
+        "type": "elmo_token_embedder",
+        "options_file": "https://s3-us-west-2.amazonaws.com/allennlp/models/elmo/2x4096_512_2048cnn_2xhighway/elmo_2x4096_512_2048cnn_2xhighway_options.json",
+        "weight_file": "https://s3-us-west-2.amazonaws.com/allennlp/models/elmo/2x4096_512_2048cnn_2xhighway/elmo_2x4096_512_2048cnn_2xhighway_weights.hdf5",
+        "do_layer_norm": false,
+        "dropout": 0.5,
+        "requires_grad": false
+      }
+    },
+    "sentence_encoder": {
+      "type": "lstm",
+      "bidirectional": true,
+      "input_size": 1024,
+      "hidden_size": 1024,
+      "num_layers": 1
+    },
+    "classifier_feedforward": {
+      "input_dim": 3072,
+      "num_layers": 2,
+      "hidden_dims": [300, 2],
+      "activations": ["relu", "linear"],
+      "dropout": [0.2, 0.0]
+    }
+  },
+  "iterator": {
+    "type": "bucket",
+    "sorting_keys": [["sentence", "num_tokens"]],
+    "batch_size": 10
+  },
+  "trainer": {
+    "num_epochs": 500,
+    "patience": 20,
+    "cuda_device": 0,
+    "grad_clipping": 5.0,
+    "validation_metric": "+accuracy",
+    "optimizer": {
+      "type": "adagrad"
+    }
+  }
+}

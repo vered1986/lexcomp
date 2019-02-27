@@ -1,0 +1,41 @@
+{
+  "dataset_reader": {
+    "type": "seq_label",
+    "token_indexers": {
+      "bert": {
+        "type": "bert-pretrained",
+        "pretrained_model": "bert-base-uncased"
+      }
+    }
+  },
+  "train_data_path": "diagnostic_classifiers/data/mwe_type/train.jsonl",
+  "validation_data_path": "diagnostic_classifiers/data/mwe_type/val.jsonl",
+  "model": {
+    "type": "seq_label",
+    "text_field_embedder": {
+      "allow_unmatched_keys": true,
+      "embedder_to_indexer_map": {
+          "bert": ["bert", "bert-offsets"]
+      },
+      "bert": {
+        "type": "bert-pretrained",
+        "pretrained_model": "bert-base-uncased",
+        "requires_grad": false
+      }
+    }
+  },
+  "iterator": {
+    "type": "basic",
+    "batch_size": 10
+  },
+  "trainer": {
+    "num_epochs": 500,
+    "patience": 20,
+    "cuda_device": 2,
+    "grad_clipping": 5.0,
+    "validation_metric": "+f1-measure-overall",
+    "optimizer": {
+      "type": "adagrad"
+    }
+  }
+}

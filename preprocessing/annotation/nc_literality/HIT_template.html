@@ -1,0 +1,38 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+
+  <crowd-instructions link-text="View instructions" link-type="button">
+    <short-summary>
+      <p>In this task you are given a sentence with a highlighted span containing one word within a noun compound.
+         You are asked to indicate whether this word is used literally or not.
+         For example, <i>oil</i> is used literally in <i>olive oil</i> and non-literally in <i>snake oil</i>.</p>
+    </short-summary>
+    
+    <detailed-instructions>
+      <p>In this task you are given a sentence with a highlighted span containing one word within a noun compound.
+         You are asked to indicate whether this word is used literally or not.
+         For example, <i>oil</i> is used literally in <i>olive oil</i> and non-literally in <i>snake oil</i>.</p>
+    </detailed-instructions>
+
+    <positive-example>
+      <p><i>"Young blood is probably <mark>snake oil</mark>, says FDA"</i>, "oil" is used literally and "snake" is used non-literally.</p>
+      <p><i>"Leave the <mark>rat race</mark> behind, escape and unwind"</i>, both "rat" and "race" are used non-literally.</p>
+    </positive-example>
+  </crowd-instructions>
+
+  <div>
+    <p><i>${sent}</i></p>
+    <p>Is the highlighted word used literally or non-literally?</p>
+    <input type="radio" name="label" value="literal" required> Literally <br>
+    <input type="radio" name="label" value="non_literal"> Non-literally <br>
+    <input type="radio" name="label" value="incorrect"> I can't tell / the sentence does not make sense <br>
+    <br/>
+  </div>
+
+</crowd-form>
