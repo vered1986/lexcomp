@@ -74,5 +74,9 @@ bash files.
 
 ### Citation
 
+
 Still a Pain in the Neck: Evaluating Text Representations on Lexical Composition. 
+
 Vered Shwartz and Ido Dagan. arXiv 2019.
+
+
