@@ -5,7 +5,7 @@
 
 - Python 3
 - argparse
-- [allennlp (0.7.1)](https://github.com/allenai/allennlp/)
+- [allennlp (0.8.1)](https://github.com/allenai/allennlp/)
 
 ### Downloading Data:
 
