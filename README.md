@@ -18,10 +18,10 @@ and update its path in the JSON files.
 Once you do, you will need to extract the sentences themselves:
 
 ```
-python preprocessing/annotation/get_sentences_from_bnc.py \ 
+python preprocessing/get_sentences_from_bnc.py \ 
     [/path/to/corpora]/bnc/2554/download/Texts/ \ 
-    diagnostic_classifiers/data/vpc_classification/ids_ \ 
-    diagnostic_classifiers/data/vpc
+    diagnostic_classifiers/data/vpc_classification \ 
+    diagnostic_classifiers/data/vpc_classification
 ```
 
 
