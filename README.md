@@ -5,23 +5,23 @@
 
 - Python 3
 - argparse
-- [allennlp (0.7.1)](https://github.com/allenai/allennlp/)
+- [allennlp (0.8.1)](https://github.com/allenai/allennlp/)
 
 ### Downloading Data:
 
 Download the pre-trained models using `bash download.sh`.
 
-The VPC classification tasks needs a copy of the BNC corpus. 
+The VPC classification and LVC classification tasks need a copy of the BNC corpus. 
 Please download the XML version from [here](http://www.ota.ox.ac.uk/desc/2554),
 and update its path in the JSON files.
 
 Once you do, you will need to extract the sentences themselves:
 
 ```
-python preprocessing/annotation/get_sentences_from_bnc.py \ 
+python preprocessing/get_sentences_from_bnc.py \ 
     [/path/to/corpora]/bnc/2554/download/Texts/ \ 
-    diagnostic_classifiers/data/vpc_classification/ids_ \ 
-    diagnostic_classifiers/data/vpc
+    diagnostic_classifiers/data/vpc_classification/ \ 
+    diagnostic_classifiers/data/vpc_classification
 ```
 
 

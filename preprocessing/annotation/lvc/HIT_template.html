@@ -1,0 +1,84 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+
+  <crowd-instructions link-text="View instructions" link-type="button">
+    <short-summary>
+      <p>
+        In this task you are given a sentence with a highlighted span containing a phrasal verb.
+        You are asked to identify whether the verb in the phrase is a "support verb". This happens when either:
+      </p>
+      <p>
+        1) the phrase meaning comes mostly from the noun, and the verb itself is not used in its common meaning.
+        For example, <i>take a shower</i> has most of its meaning from <i>shower</i>, and you don't actually take something.
+      </p>
+      <p>
+        2) it is sometimes possible to replace the phrase with a single verb, which is often similar to the noun
+        (e.g. <i>make a decision</i> can be rephrased as <i>decide</i>).
+      </p>
+      </p>
+    </short-summary>
+    
+    <detailed-instructions>
+      <p>
+        In this task you are given a sentence with a highlighted span containing a phrasal verb.
+        You are asked to identify whether the verb in the phrase is a "support verb". This happens when either:
+      </p>
+      <p>
+        1) the phrase meaning comes mostly from the noun, and the verb itself is not used in its common meaning.
+        For example, <i>take a shower</i> has most of its meaning from <i>shower</i>, and you don't actually take something.
+      </p>
+      <p>
+        2) it is sometimes possible to replace the phrase with a single verb, which is often similar to the noun
+        (e.g. <i>make a decision</i> can be rephrased as <i>decide</i>).
+      </p>
+
+      <p>
+        Note that the original phrase may have arguments and modifiers,
+        for example, instead of <i>make a decision</i>, it can be <i>make a very difficult decision</i>.
+        If you can't rephrase the arguments (e.g. there is not way to say "<i>decide very difficult</i>"),
+        see if you can ignore them without changing the meaning of the sentence completely.
+      </p>
+    </detailed-instructions>
+
+    <positive-example>
+      <p>
+        <i>He <mark>took a walk</mark> to the other side of the lake.</i>
+        Most of the meaning comes from <i>walk</i>, and you can rephrase it to "<i>He walked</i>".
+      </p>
+      <p>
+        <i>She <mark>took a deep breath</mark>.</i>
+        Most of the meaning comes from <i>breath</i>, and you can rephrase it to "<i>She breathed</i>".
+      </p>
+    </positive-example>
+
+    <negative-example>
+      <p>
+        <i>I think we should <mark>take the chance</mark>.</i>
+        Most of the meaning comes from <i>chance</i>, but you can't rephrase to "<i>We should chance</i>".
+      </p>
+      <p>
+        <i>She thrives in dynamic situations, <mark>taking charge</mark> and dealing with people.</i>
+        Most of the meaning comes from <i>charge</i>, but you can't rephrase to "<i>charging and dealing</i>".
+      </p>
+    </negative-example>
+
+  </crowd-instructions>
+
+  <div>
+    <h3><i>${sent}</i></h3>
+    <h4>Mark all that apply to the highlighted span in the given context:</h4>
+
+    <input type="checkbox" name="answer" value="simple_lvc"> It describes an action of "<i>${simple_lvc}</i>".<br>
+    <input type="checkbox" name="answer" value="meaning_verb"> It describes an action of "<i>${aux} something</i>", in the common meaning of "<i>${aux}</i>".<br>
+    <input type="checkbox" name="answer" value="meaning_noun"> The essence of the action is described by "<i>${noun}</i>".<br>
+    <input type="checkbox" name="answer" value="substitute"> The span could be rephrased without "<i>${aux}</i>" but with a verb like "<i>${substitute_verb}</i>" without changing the meaning of the sentence.<br>
+    <input type="checkbox" name="answer" value="incorrect"> The sentence does not make sense or is ungrammatical.<br><br>
+  </div>
+
+</crowd-form>

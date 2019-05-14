@@ -4,7 +4,6 @@ ap = argparse.ArgumentParser()
 ap.add_argument('bnc_path', help='The path to the BNC corpus files')
 ap.add_argument('dataset_path', help='The path to the dataset directory with the BNC IDs')
 ap.add_argument('out_path', help='Where to save the dataset with the sentences from BNC')
-ap.add_argument('--output_csv', help='Whether to save in CSV format for annotation', action='store_true')
 args = ap.parse_args()
 
 import logging
@@ -13,7 +12,6 @@ logger = logging.getLogger(__name__)
 
 import os
 import re
-import csv
 import json
 import tqdm
 import spacy
@@ -33,11 +31,10 @@ def main():
     bnc_reader = BNCDatasetReader(args.bnc_path)
     dataset = {}
 
-    # Reading and writing all the instances to a CSV file for annotation
-    if args.output_csv:
-        in_file = args.dataset_path
+    for s in ['train', 'test', 'val']:
+        in_file = os.path.join(args.dataset_path, f'ids_{s}.jsonl')
         logger.info(f'Reading from {in_file}')
-        dataset = []
+        dataset[s] = []
 
         with codecs.open(in_file, 'r', 'utf-8') as f_in:
             for line in tqdm.tqdm(f_in):
@@ -45,57 +42,18 @@ def main():
                     curr_example_json = json.loads(line.strip())
                     instance = bnc_reader.get_single_instance_from_json(curr_example_json)
                     if instance is not None:
-                        dataset.append(instance)
+                        dataset[s].append(instance)
                 except:
                     logger.warning(f'Error in line: {line}')
                     pass
 
-        out_file = os.path.join(args.out_path, 'batch_instances.csv')
+    for s in ['train', 'test', 'val']:
+        out_file = os.path.join(args.out_path, f'{s}.jsonl')
         logger.info(f'Writing the to {out_file}')
-        field_names = ['sent_id', 'sent', 'w_first', 'w_last', 'original_label']
 
         with codecs.open(out_file, 'w', 'utf-8') as f_out:
-            writer = csv.DictWriter(f_out, fieldnames=field_names)
-            writer.writeheader()
-
-            for instance in dataset:
-                tokens = instance['sentence'].split()
-                sent_w_marked_span = instance['sentence'].split()
-                sent_w_marked_span[instance['start']] = '<mark>' + sent_w_marked_span[instance['start']]
-                sent_w_marked_span[instance['end']] += '</mark>'
-
-                new_instance = {'sent_id': instance['bnc_id'],
-                                'sent': ' '.join(sent_w_marked_span),
-                                'original_label': instance['label'],
-                                'w_first': tokens[instance['start']],
-                                'w_last': tokens[instance['end']]}
-                writer.writerow(new_instance)
-
-    # Reading and writing each set to a jsonl file as the final dataset annotation
-    else:
-        for s in ['train', 'test', 'val']:
-            in_file = os.path.join(args.dataset_path, f'ids_{s}.jsonl')
-            logger.info(f'Reading from {in_file}')
-            dataset[s] = []
-
-            with codecs.open(in_file, 'r', 'utf-8') as f_in:
-                for line in tqdm.tqdm(f_in):
-                    try:
-                        curr_example_json = json.loads(line.strip())
-                        instance = bnc_reader.get_single_instance_from_json(curr_example_json)
-                        if instance is not None:
-                            dataset[s].append(instance)
-                    except:
-                        logger.warning(f'Error in line: {line}')
-                        pass
-
-        for s in ['train', 'test', 'val']:
-            out_file = os.path.join(args.out_path, f'{s}.jsonl')
-            logger.info(f'Writing the to {out_file}')
-
-            with codecs.open(out_file, 'w', 'utf-8') as f_out:
-                for instance in dataset[s]:
-                    f_out.write(json.dumps(instance) + '\n')
+            for instance in dataset[s]:
+                f_out.write(json.dumps(instance) + '\n')
 
 
 

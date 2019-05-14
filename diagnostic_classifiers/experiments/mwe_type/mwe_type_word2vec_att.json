@@ -1,0 +1,43 @@
+{
+  "dataset_reader": {
+    "type": "seq_label",
+    "token_indexers": {
+      "tokens": {
+        "type": "single_id",
+        "lowercase_tokens": true
+      }
+    }
+  },
+  "train_data_path": "diagnostic_classifiers/data/mwe_type/train.jsonl",
+  "validation_data_path": "diagnostic_classifiers/data/mwe_type/val.jsonl",
+  "model": {
+    "type": "seq_label",
+    "text_field_embedder": {
+      "tokens": {
+        "type": "embedding",
+        "pretrained_file": "https://s3-us-west-2.amazonaws.com/allennlp/datasets/word2vec/GoogleNews-vectors-negative300.txt.gz",
+        "embedding_dim": 300,
+        "trainable": false
+      }
+    },
+    "sentence_encoder": {
+      "type": "intra_sentence_attention",
+      "input_dim": 300
+    }
+  },
+  "iterator": {
+    "type": "bucket",
+    "sorting_keys": [["sentence_words", "num_tokens"]],
+    "batch_size": 10
+  },
+  "trainer": {
+    "num_epochs": 500,
+    "patience": 20,
+    "cuda_device": 3,
+    "grad_clipping": 5.0,
+    "validation_metric": "+f1-measure-overall",
+    "optimizer": {
+      "type": "adagrad"
+    }
+  }
+}

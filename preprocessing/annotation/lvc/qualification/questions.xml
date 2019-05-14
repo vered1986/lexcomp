@@ -1,0 +1,127 @@
+<QuestionForm xmlns='http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd'>  
+    <Question>
+      <QuestionIdentifier>q1</QuestionIdentifier>
+      <DisplayName>Q1</DisplayName>
+      <IsRequired>true</IsRequired>
+      <QuestionContent>
+        <FormattedContent><![CDATA[<i>One should live a healthy lifestyle, including <b>taking exercise</b>
+        and avoiding smoking and heavy drinking.</i> Can you replace "<b>taking exercise</b>" with a verb without
+        changing the meaning of the sentence?]]></FormattedContent>
+      </QuestionContent>
+      <AnswerSpecification>
+        <SelectionAnswer>
+          <StyleSuggestion>radiobutton</StyleSuggestion>
+          <Selections>
+            <Selection>
+              <SelectionIdentifier>lvc</SelectionIdentifier>
+              <Text>Yes</Text>
+            </Selection>
+            <Selection>
+              <SelectionIdentifier>non_lvc</SelectionIdentifier>
+              <Text>No</Text>
+            </Selection>
+          </Selections>
+        </SelectionAnswer>
+      </AnswerSpecification>
+    </Question>
+    <Question>
+      <QuestionIdentifier>q2</QuestionIdentifier>
+      <DisplayName>Q2</DisplayName>
+      <IsRequired>true</IsRequired>
+      <QuestionContent>
+        <FormattedContent><![CDATA[<i>Aggressive people may criticize back in order to <b>take the attention</b>
+            away from themselves.</i> Can you replace "<b>take the attention</b>" with a verb without changing the
+            meaning of the sentence?]]></FormattedContent>
+      </QuestionContent>
+      <AnswerSpecification>
+        <SelectionAnswer>
+          <StyleSuggestion>radiobutton</StyleSuggestion>
+          <Selections>
+            <Selection>
+              <SelectionIdentifier>lvc</SelectionIdentifier>
+              <Text>Yes</Text>
+            </Selection>
+            <Selection>
+              <SelectionIdentifier>non_lvc</SelectionIdentifier>
+              <Text>No</Text>
+            </Selection>
+          </Selections>
+        </SelectionAnswer>
+      </AnswerSpecification>
+    </Question>
+    <Question>
+      <QuestionIdentifier>q3</QuestionIdentifier>
+      <DisplayName>Q3</DisplayName>
+      <IsRequired>true</IsRequired>
+      <QuestionContent>
+        <FormattedContent><![CDATA[<i>Bob <b>took a photo</b> of Alice from the album and kept it to himself.</i>
+            Can you replace "<b>took a photo</b>" with a verb without changing the meaning of the sentence?]]>
+        </FormattedContent>
+      </QuestionContent>
+      <AnswerSpecification>
+        <SelectionAnswer>
+          <StyleSuggestion>radiobutton</StyleSuggestion>
+          <Selections>
+            <Selection>
+              <SelectionIdentifier>lvc</SelectionIdentifier>
+              <Text>Yes</Text>
+            </Selection>
+            <Selection>
+              <SelectionIdentifier>non_lvc</SelectionIdentifier>
+              <Text>No</Text>
+            </Selection>
+          </Selections>
+        </SelectionAnswer>
+      </AnswerSpecification>
+    </Question>
+    <Question>
+      <QuestionIdentifier>q4</QuestionIdentifier>
+      <DisplayName>Q4</DisplayName>
+      <IsRequired>true</IsRequired>
+      <QuestionContent>
+        <FormattedContent><![CDATA[<i>Alice <b>took a photo</b> of the cupcake and posted it on Instagram.</i>
+        Can you replace "<b>took a photo</b>" with a verb without changing the meaning of the sentence?]]>
+        </FormattedContent>
+      </QuestionContent>
+      <AnswerSpecification>
+        <SelectionAnswer>
+          <StyleSuggestion>radiobutton</StyleSuggestion>
+          <Selections>
+            <Selection>
+              <SelectionIdentifier>lvc</SelectionIdentifier>
+              <Text>Yes</Text>
+            </Selection>
+            <Selection>
+              <SelectionIdentifier>non_lvc</SelectionIdentifier>
+              <Text>No</Text>
+            </Selection>
+          </Selections>
+        </SelectionAnswer>
+      </AnswerSpecification>
+    </Question>
+    <Question>
+      <QuestionIdentifier>q5</QuestionIdentifier>
+      <DisplayName>Q5</DisplayName>
+      <IsRequired>true</IsRequired>
+      <QuestionContent>
+        <FormattedContent><![CDATA[<i>The government can afford <b>giving equal social provision</b> to remote areas.</i>
+           Can you replace "<b>giving equal social provision</b>" with a verb without changing the meaning of the sentence?]]>
+        </FormattedContent>
+      </QuestionContent>
+      <AnswerSpecification>
+        <SelectionAnswer>
+          <StyleSuggestion>radiobutton</StyleSuggestion>
+          <Selections>
+            <Selection>
+              <SelectionIdentifier>lvc</SelectionIdentifier>
+              <Text>Yes</Text>
+            </Selection>
+            <Selection>
+              <SelectionIdentifier>non_lvc</SelectionIdentifier>
+              <Text>No</Text>
+            </Selection>
+          </Selections>
+        </SelectionAnswer>
+      </AnswerSpecification>
+    </Question>
+</QuestionForm>
