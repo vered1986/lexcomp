@@ -125,9 +125,9 @@ class SentenceSpanSentenceClassificationModel(Model):
         # Encode the sequence
         if self.seq2seq_encoder:
             sentence1_mask = util.get_text_field_mask(sentence1)
-            encoded_sentence1 = self.seq2seq_encoder(embedded_sentence1, sentence1_mask).data
+            encoded_sentence1 = self.seq2seq_encoder(embedded_sentence1.data, sentence1_mask)
             sentence2_mask = util.get_text_field_mask(sentence2)
-            encoded_sentence2 = self.seq2seq_encoder(embedded_sentence2, sentence2_mask).data
+            encoded_sentence2 = self.seq2seq_encoder(embedded_sentence2.data, sentence2_mask)
 
         # Using an embedder that returns a vector for each token.
         # We take the span from it.
